@@ -10,5 +10,4 @@ public class CouponServiceApplication {
 		SpringApplication.run(CouponServiceApplication.class, args);
 		System.out.println("Good to go... :)");
 	}
-
 }
