@@ -12,7 +12,7 @@ public class CouponController {
     @Autowired
     private CouponRepository couponRepository;
 
-    @GetMapping("find/id/{code}")
+    @GetMapping("find/code/{code}")
     public Coupon findCouponByCode(@PathVariable ("code") String code) {
         return couponRepository.findCouponByCode(code);
     }
