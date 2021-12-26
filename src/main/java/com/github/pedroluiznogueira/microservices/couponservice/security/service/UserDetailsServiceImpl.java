@@ -1,4 +1,4 @@
-package com.github.pedroluiznogueira.microservices.couponservice.security;
+package com.github.pedroluiznogueira.microservices.couponservice.security.service;
 
 import com.github.pedroluiznogueira.microservices.couponservice.model.User;
 import com.github.pedroluiznogueira.microservices.couponservice.repository.UserRepository;
