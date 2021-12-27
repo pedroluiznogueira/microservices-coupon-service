@@ -28,9 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin();
-        http.authorizeRequests().mvcMatchers(HttpMethod.GET, "/coupons/find/code/{code:^[A-Z]*$}","/","/index","/showCreateCoupon","/createCoupon")
-                .hasAnyRole("USER", "ADMIN").mvcMatchers(HttpMethod.POST, "/coupons/**").hasRole("ADMIN")
-                .anyRequest().denyAll().and().csrf().disable();
+        http.authorizeRequests().mvcMatchers(HttpMethod.GET, "/coupons/find/code/{code:^[A-Z]*$}","/","/index","/showCreateCoupon","/createCoupon","/createResponse")
+                .hasAnyRole("USER", "ADMIN").mvcMatchers(HttpMethod.POST, "/coupons/**","/saveCoupon").hasRole("ADMIN")
+                .anyRequest().permitAll().and().csrf().disable();
     }
 
     @Bean
