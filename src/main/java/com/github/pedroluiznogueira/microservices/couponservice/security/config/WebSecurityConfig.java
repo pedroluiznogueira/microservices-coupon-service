@@ -35,22 +35,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     "/coupons/find/code/{code:^[A-Z]*$}",
                     "/",
                     "/index",
-                    "/showCreateCoupon",
-                    "/createCoupon",
-                    "/createResponse",
                     "/showGetCoupon",
-                    "/getCoupon"
+                    "/getCoupon",
+                    "/couponDetails"
             )
             .hasAnyRole(
                     "USER",
                     "ADMIN"
             )
             .mvcMatchers(
+                    HttpMethod.GET,
+                    "/showCreateCoupon",
+                    "/createCoupon",
+                    "createResponse"
+            )
+            .hasRole("ADMIN")
+            .mvcMatchers(
+                    HttpMethod.POST,
+                    "/getCoupon"
+            )
+            .hasAnyRole("USER","ADMIN")
+            .mvcMatchers(
                     HttpMethod.POST,
                     "/coupons/**",
                     "/saveCoupon",
-                    "/getCoupon",
-                    "/couponDetails"
+                    "/getCoupon"
             )
             .hasRole("ADMIN")
             .anyRequest().permitAll().and().csrf().disable();
