@@ -63,7 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .hasRole("ADMIN")
             .mvcMatchers("/","/login")
             .permitAll()
-            .anyRequest().permitAll().and().csrf().disable();
+            .anyRequest().permitAll().and().csrf().disable()
+            .logout().logoutSuccessUrl("/");
     }
 
     @Bean
