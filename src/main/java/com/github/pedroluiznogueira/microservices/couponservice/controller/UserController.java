@@ -1,6 +1,7 @@
 package com.github.pedroluiznogueira.microservices.couponservice.controller;
 
 import com.github.pedroluiznogueira.microservices.couponservice.security.service.SecurityService;
+import com.github.pedroluiznogueira.microservices.couponservice.security.service.SecurityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     @Autowired
-    private SecurityService securityService;
+    private SecurityServiceImpl securityService;
 
     @GetMapping("/")
     public String showLoginPage() {
