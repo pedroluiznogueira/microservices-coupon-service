@@ -28,13 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // configure how and wich urls access api
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin();
         http
             .authorizeRequests()
             .mvcMatchers(
                     HttpMethod.GET,
                     "/coupons/find/code/{code:^[A-Z]*$}",
-                    "/",
                     "/index",
                     "/showGetCoupon",
                     "/getCoupon",
@@ -63,6 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     "/getCoupon"
             )
             .hasRole("ADMIN")
+            .mvcMatchers("/","/login")
+            .permitAll()
             .anyRequest().permitAll().and().csrf().disable();
     }
 
