@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     "/getCoupon"
             )
             .hasRole("ADMIN")
-            .mvcMatchers("/","/login")
+            .mvcMatchers("/","/login","/logout","/showReg","/registerUser")
             .permitAll()
             .anyRequest().permitAll().and().csrf().disable()
             .logout().logoutSuccessUrl("/");
