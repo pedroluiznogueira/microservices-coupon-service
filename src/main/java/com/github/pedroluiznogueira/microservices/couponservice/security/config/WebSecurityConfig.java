@@ -27,9 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // configure how and wich urls access api
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();
-        http.authorizeRequests().mvcMatchers(HttpMethod.GET, "/coupons/find/code/{code:^[A-Z]*$}").hasAnyRole("USER", "ADMIN")
-                .mvcMatchers(HttpMethod.POST, "/coupons/**").hasRole("ADMIN").anyRequest().denyAll().and().csrf().disable();
+        http.formLogin();
+        http.authorizeRequests().mvcMatchers(HttpMethod.GET, "/coupons/find/code/{code:^[A-Z]*$}","/","/index")
+                .hasAnyRole("USER", "ADMIN").mvcMatchers(HttpMethod.POST, "/coupons/**").hasRole("ADMIN")
+                .anyRequest().denyAll().and().csrf().disable();
     }
 
     @Bean

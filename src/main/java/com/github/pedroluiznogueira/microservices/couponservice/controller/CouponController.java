@@ -1,24 +1,13 @@
 package com.github.pedroluiznogueira.microservices.couponservice.controller;
 
-import com.github.pedroluiznogueira.microservices.couponservice.model.Coupon;
-import com.github.pedroluiznogueira.microservices.couponservice.repository.CouponRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
-@RequestMapping("/coupons")
+@Controller
 public class CouponController {
 
-    @Autowired
-    private CouponRepository couponRepository;
-
-    @PostMapping("/create")
-    public Coupon createCoupon(@RequestBody Coupon coupon) {
-        return couponRepository.save(coupon);
-    }
-
-    @GetMapping("/find/code/{code}")
-    public Coupon findCouponByCode(@PathVariable ("code") String code) {
-        return couponRepository.findCouponByCode(code);
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 }
